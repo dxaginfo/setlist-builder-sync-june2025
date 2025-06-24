@@ -1,55 +1,49 @@
 # Setlist Builder + Sync
 
-A web application for musicians to create, manage, and synchronize setlists across devices with real-time collaboration features.
-
-## Project Overview
-
-Setlist Builder + Sync is designed to help musicians and bands:
-
-- Create and organize setlists for performances and rehearsals
-- Store song information, lyrics, and chord charts
-- Collaborate with band members in real-time
-- Use a distraction-free performance mode with auto-scrolling
-- Export and share setlists with venue staff
-- Track setlist history and changes over time
+A comprehensive web application for musicians and bands to create, manage, and synchronize setlists across team members. Streamline your performance preparation with collaborative setlist management, real-time syncing, and performance mode features.
 
 ## Features
 
-- **Setlist Management**: Create, edit, and organize multiple setlists
-- **Song Library**: Maintain a comprehensive library of songs with metadata
-- **Real-time Collaboration**: Share and edit setlists with band members simultaneously
-- **Performance Mode**: Distraction-free interface with auto-scrolling and quick navigation
-- **Export Options**: Share and print setlists in various formats
-- **Version History**: Track changes and revert to previous versions
+- **Setlist Management**: Create, edit, and organize setlists with drag-and-drop functionality
+- **Song Library**: Maintain a database of your songs with details like key, tempo, and duration
+- **Band Collaboration**: Share setlists with band members and collaborate in real-time
+- **Performance Mode**: Distraction-free view with auto-scrolling and night mode for live performances
+- **Version History**: Track changes to setlists with full version history
+- **Sync Across Devices**: Access your setlists on any device with real-time synchronization
+- **Export Options**: Export setlists as PDF, text, or share via link
+- **Notes & Annotations**: Add performance notes, reminders, and annotations to songs and setlists
+- **Set Time Calculator**: Automatically calculate set duration based on song lengths
+- **Offline Support**: Access and edit setlists even without internet connection
 
-## Technology Stack
+## Tech Stack
 
 ### Frontend
-- React.js with TypeScript
+- React with TypeScript
 - Redux Toolkit for state management
-- Material-UI components
-- Socket.io client for real-time updates
-- Styled-components for responsive design
+- Material UI for component library
+- Socket.io for real-time updates
+- PWA (Progressive Web App) for offline functionality
 
 ### Backend
 - Node.js with Express
-- RESTful API with GraphQL support
+- PostgreSQL database with Sequelize ORM
+- Redis for caching and session management
 - Socket.io for real-time communication
-- JWT authentication with OAuth 2.0
-- AWS S3 for file storage
+- JWT for authentication
 
-### Database
-- PostgreSQL for structured data
-- Redis for caching and performance
+### DevOps
+- Docker for containerization
+- GitHub Actions for CI/CD
+- AWS S3 for file storage
 - Elasticsearch for search functionality
 
-## Setup Instructions
+## Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm (v9 or higher)
-- PostgreSQL (v14 or higher)
-- Redis (v6 or higher)
+- Node.js (v16 or higher)
+- npm or yarn
+- Docker and Docker Compose (for containerized setup)
+- PostgreSQL (if running locally without Docker)
 
 ### Installation
 
@@ -59,84 +53,58 @@ Setlist Builder + Sync is designed to help musicians and bands:
    cd setlist-builder-sync-june2025
    ```
 
-2. Install backend dependencies:
+2. Set up environment variables:
    ```bash
+   cp client/.env.example client/.env
+   cp server/.env.example server/.env
+   ```
+   Update the environment files with your configuration.
+
+3. Run with Docker (recommended):
+   ```bash
+   docker-compose up
+   ```
+
+4. Or install and run locally:
+   ```bash
+   # Install and start backend
    cd server
    npm install
-   ```
-
-3. Install frontend dependencies:
-   ```bash
-   cd ../client
-   npm install
-   ```
-
-4. Set up environment variables:
-   - Create `.env` files in both `client` and `server` directories based on the provided templates
-
-5. Initialize the database:
-   ```bash
-   cd ../server
-   npm run db:migrate
-   npm run db:seed
-   ```
-
-6. Start the development servers:
-   ```bash
-   # In server directory
    npm run dev
-   
-   # In client directory (separate terminal)
+
+   # In a new terminal, install and start frontend
+   cd client
+   npm install
    npm start
    ```
 
-## Project Structure
+5. The application will be available at:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5000
 
-```
-setlist-builder-sync/
-├── client/               # Frontend React application
-│   ├── public/           # Static files
-│   └── src/              # React source code
-│       ├── components/   # UI components
-│       ├── pages/        # Page components
-│       ├── store/        # Redux state management
-│       ├── services/     # API services
-│       └── utils/        # Utility functions
-│
-├── server/               # Backend Node.js application
-│   ├── config/           # Configuration files
-│   ├── controllers/      # Request handlers
-│   ├── models/           # Database models
-│   ├── routes/           # API routes
-│   ├── services/         # Business logic
-│   ├── middleware/       # Express middleware
-│   └── utils/            # Utility functions
-│
-└── docs/                 # Documentation
-```
+## API Documentation
 
-## Deployment
-
-The application can be deployed using Docker:
-
-```bash
-docker-compose up -d
-```
-
-For production deployment, follow the detailed instructions in the deployment guide.
+API documentation is available at `/api/docs` when the server is running, powered by Swagger.
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature-name`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature/your-feature-name`
-5. Open a pull request
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Contact
+## Acknowledgments
 
-For questions or support, please open an issue in the GitHub repository.
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [Material UI](https://mui.com/)
+- [Sequelize](https://sequelize.org/)
+- [Socket.io](https://socket.io/)
